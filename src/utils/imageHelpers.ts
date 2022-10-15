@@ -38,7 +38,7 @@ const resizeImage = (
   outputImagePath: string,
   width: number,
   height: number
-) => {
+): void => {
   const image = sharp(imagePath);
   const resizedImage = image.resize(width, height);
   resizedImage.toFile(outputImagePath);

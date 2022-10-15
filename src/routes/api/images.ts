@@ -16,11 +16,7 @@ routes.get('/', (req, res) => {
    */
   const [imageExistsFlag, imageName, imagePath] = inputImageExists(req);
   if (imageExistsFlag == false) {
-    res
-      .status(400)
-      .send(
-        `${imagePath} doesn't exist. Make sure to have an image inside ${inputDir} with jpg extensions`
-      );
+        throw new Error(`${imagePath} doesn't exist. Make sure to have an image inside ${inputDir} with jpg extensions`)
   }
   const [outputImageFlag, outputImagePath, width, height] = outputImageExists(
     req,
@@ -29,10 +25,10 @@ routes.get('/', (req, res) => {
   if (outputImageFlag == true) {
     res.sendFile(path.resolve(outputImagePath));
   } else {
-    resizeImage(imagePath, outputImagePath, width, height);
-    setTimeout(() => {
-      res.sendFile(path.resolve(outputImagePath));
-    }, 2000);
+    resizeImage(imagePath, outputImagePath, width, height)
+    setTimeout(()=>{
+      res.sendFile(path.resolve(outputImagePath))
+    }, 2000) // Timeout is used as resizeImage() occurs after sendFile(). # TODO: A smarter workaround
   }
 });
 
