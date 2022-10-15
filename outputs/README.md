@@ -1,0 +1,1 @@
+Output images (resized) will be written to this directory
