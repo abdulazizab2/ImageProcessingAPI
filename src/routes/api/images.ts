@@ -16,6 +16,7 @@ routes.get('/', (req, res) => {
    */
   const [imageExistsFlag, imageName, imagePath] = inputImageExists(req);
   if (imageExistsFlag == false) {
+    res.status(404);
     throw new Error(
       `${imagePath} doesn't exist. Make sure to have an image inside ${inputDir} with jpg extensions`
     );
