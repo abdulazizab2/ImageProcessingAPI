@@ -44,4 +44,4 @@ const resizeImage = (
   resizedImage.toFile(outputImagePath);
 };
 
-export { inputImageExists, outputImageExists, resizeImage };
+export { fileExists, inputImageExists, outputImageExists, resizeImage };
