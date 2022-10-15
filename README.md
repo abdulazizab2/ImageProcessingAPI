@@ -37,3 +37,9 @@ localhost:8000/api/images?filename=${IMAGE_NAME_WITHOUT_EXTENSION}&width=${NEW_W
 ```NEW_HEIGHT```: The height you'd like to resize your image to
 
 The resized image will be shown in the browser and it will be sized inside ```outputs``` directory
+
+# Notes
+
+## Notes on Unit Testing
+
+As some unit tests test the functionality of saving images to disk. Using ```npm run test``` will remove all .jpg images inside ```outputs``` directory

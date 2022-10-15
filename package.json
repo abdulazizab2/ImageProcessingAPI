@@ -9,6 +9,7 @@
     "lint": "eslint src/**/*.ts",
     "build": "npx tsc",
     "jasmine": "jasmine",
+    "pretest": "rm outputs/*.jpg",
     "test": "npm run build && npm run jasmine"
   },
   "author": "",
