@@ -42,8 +42,13 @@ async function resizeImage(
   res: express.Response
 ): Promise<void> {
   const image = sharp(imagePath);
-  const resizedImage = image.resize(width, height);
-  await resizedImage.toFile(outputImagePath);
+  try {
+    const resizedImage = image.resize(width, height);
+    await resizedImage.toFile(outputImagePath);
+  } catch {
+    res.status(404);
+    res.send('width and/or height are not passed in the query!');
+  }
   res.sendFile(path.resolve(outputImagePath));
 }
 

@@ -32,8 +32,14 @@ describe('testing endpoints of /api/images', () => {
     );
     expect(result.statusCode).toBe(404);
   });
-  it('expect GET /api/images?filename=santamonica statusCode to be 500', async () => {
+  it('expect GET /api/images?filename=santamonica statusCode to be 404', async () => {
     const result = await supertest(app).get('/api/images?filename=santamonica');
-    expect(result.statusCode).toBe(500);
+    expect(result.statusCode).toBe(404);
+  });
+  it('expect GET /api/images?filename=santamonica text to be "width and/or height are not passed in the query!"', async () => {
+    const result = await supertest(app).get('/api/images?filename=santamonica');
+    expect(result.text).toBe(
+      'width and/or height are not passed in the query!'
+    );
   });
 });
