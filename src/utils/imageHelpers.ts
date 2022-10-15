@@ -1,6 +1,7 @@
 import express from 'express';
 import fs from 'fs'; // not Async
 import sharp from 'sharp';
+import path from 'path';
 
 export const inputDir = './images';
 export const outputDir = './outputs';
@@ -33,15 +34,17 @@ const outputImageExists = (
   return [flag, outputImagePath, width, height];
 };
 
-const resizeImage = (
+async function resizeImage(
   imagePath: string,
   outputImagePath: string,
   width: number,
-  height: number
-): void => {
+  height: number,
+  res: express.Response
+): Promise<void> {
   const image = sharp(imagePath);
   const resizedImage = image.resize(width, height);
-  resizedImage.toFile(outputImagePath);
-};
+  await resizedImage.toFile(outputImagePath);
+  res.sendFile(path.resolve(outputImagePath));
+}
 
 export { fileExists, inputImageExists, outputImageExists, resizeImage };

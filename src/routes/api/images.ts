@@ -27,10 +27,7 @@ routes.get('/', (req: Request, res: Response) => {
   if (outputImageFlag == true) {
     res.sendFile(path.resolve(outputImagePath));
   } else {
-    resizeImage(imagePath, outputImagePath, width, height);
-    setTimeout(() => {
-      res.sendFile(path.resolve(outputImagePath));
-    }, 2000); // Timeout is used as resizeImage() occurs after sendFile(). # TODO: A smarter workaround
+    resizeImage(imagePath, outputImagePath, width, height, res);
   }
 });
 
