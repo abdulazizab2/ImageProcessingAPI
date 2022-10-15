@@ -10,3 +10,5 @@ app.use('/api', logger, routes);
 app.listen(port, () => {
   console.log(`serving running on localhost:${port}`);
 });
+
+export default app // to test endpoint
