@@ -1,6 +1,5 @@
 import express, { NextFunction, Request, Response } from 'express';
 import path from 'path';
-import sharp from 'sharp';
 import { inputDir, outputDir } from '../../utils/imageHelpers';
 import {
   inputImageExists,
@@ -10,7 +9,7 @@ import {
 
 const routes = express.Router();
 
-routes.get('/', (req, res) => {
+routes.get('/', (req: Request, res: Response) => {
   /**
    * Note: Works only on jpg images
    */
