@@ -1,6 +1,6 @@
 import express from 'express';
 import routes from './routes/index';
-import logger from './middleware/logger'
+import logger from './middleware/logger';
 
 const app = express();
 const port = 8000;

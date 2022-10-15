@@ -1,8 +1,12 @@
-import express, { NextFunction, Request, Response } from 'express';
+import express from 'express';
 
-const logger = (req: Request, res: Response, next: NextFunction) => {
-    console.log(`${req.url} was routed`)
-    next();
-}
+const logger = (
+  req: express.Request,
+  res: express.Response,
+  next: express.NextFunction
+) => {
+  console.log(`${req.url} was routed`);
+  next();
+};
 
-export default logger
+export default logger;
